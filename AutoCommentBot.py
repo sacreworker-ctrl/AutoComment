@@ -410,8 +410,6 @@ async def main():
     print("Bot started... Flask on :8080")
     await dp.start_polling(bot)
 
-import threading
-
 flask_app = Flask(__name__)
 
 @flask_app.route("/validate")
@@ -459,7 +457,8 @@ def validate_key():
     })
 
 def run_flask():
-    flask_app.run(host="127.0.0.1", port=8080, debug=False, use_reloader=False)
+    port = int(os.environ.get("PORT", 8080))
+    flask_app.run(host="0.0.0.0", port=port, debug=False, use_reloader=False)
 
 if __name__ == "__main__":
     asyncio.run(main())
