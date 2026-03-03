@@ -210,12 +210,12 @@ async def cmd_help(msg: Message):
 
 @dp.message(Command("/manual"))
 async def cmd_manual(msg: Message):
-    db_upsert_user(msg.from_user_id, msg.from_user_username or "", msg.from_user.first_name or "")
+    db_upsert_user(msg.from_user.id, msg.from_user.username or "", msg.from_user.first_name or "")
     text = (
         f"Полный актуальный мануал (инструкцию) для программы получите тут:\n"
         f"@AuCommManual"
     )
-    await msd.answer(text, parse_mode="HTML")
+    await msg.answer(text, parse_mode="HTML")
 # ─────────────────────────────────────────────────────────────────────────────
 # /profile
 # ─────────────────────────────────────────────────────────────────────────────
