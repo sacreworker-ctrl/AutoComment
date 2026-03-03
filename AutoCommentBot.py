@@ -208,7 +208,7 @@ async def cmd_help(msg: Message):
     )
     await msg.answer(text, parse_mode="HTML")
 
-@dp.message(Command("/manual"))
+@dp.message(Command("manual"))
 async def cmd_manual(msg: Message):
     db_upsert_user(msg.from_user.id, msg.from_user.username or "", msg.from_user.first_name or "")
     text = (
